@@ -23,7 +23,7 @@ def set_logging():
     log.setLevel(logging.INFO)
     handler = logging.handlers.TimedRotatingFileHandler(os.path.join(abs_log_path,'test.log'),when='D',interval=1,backupCount=30)
     handler.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s -xi %(message)s')
     handler.setFormatter(formatter)
     log.addHandler(handler)
 tmp_line = ''
@@ -102,7 +102,6 @@ def main_handle():
     else:
         log.info("无数据。。")
     browser.refresh()
-    time.sleep(10)
 
 if __name__ == "__main__":
     set_logging()
@@ -111,3 +110,4 @@ if __name__ == "__main__":
         main_handle()
         endTime = time.time()
         log.info("本次执行结束 刷新网页 执行时间："+ str(endTime - startTime))
+        time.sleep(300)
